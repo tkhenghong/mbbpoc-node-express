@@ -9,14 +9,15 @@ const container = awilix.createContainer();
 
 container
     .register({
-        app: awilix.asClass(Application, {lifetime: awilix.Lifetime.SINGLETON}),
-        server: awilix.asClass(Server, {lifetime: awilix.Lifetime.SINGLETON}),
+      app: awilix.asClass(Application, {lifetime: awilix.Lifetime.SINGLETON}),
+      server: awilix.asClass(Server, {lifetime: awilix.Lifetime.SINGLETON}),
     })
     .register({
-        localeService: awilix.asClass(LocaleService, {lifetime: awilix.Lifetime.SINGLETON})
+      localeService: awilix.asClass(LocaleService,
+          {lifetime: awilix.Lifetime.SINGLETON}),
     })
     .register({
-        i18nProvider: awilix.asValue(i18n)
+      i18nProvider: awilix.asValue(i18n),
     });
 
-module.export = container;
+module.exports = container;

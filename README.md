@@ -11,3 +11,4 @@ A Proof of Concept project for building a platform to provide
 
 # Initial code referenced:
 * [PhraseApp-Blog/nodejs-i18n](https://github.com/PhraseApp-Blog/nodejs-i18n)
+* [node-express-realworld-example-app](https://github.com/gothinkster/node-express-realworld-example-app)
