@@ -2,9 +2,11 @@
 const mongoose = require('mongoose');
 const router = require('express').Router();
 const passport = require('passport');
-const User = mongoose.model('User');
-const auth = require('routes/auth');
 const countries = require('country-flag-emoji-json');
 
+
+router.get('/', function (req, res, next) {
+    return res.json(countries.filter(['']));
+});
 
 module.exports = router;
