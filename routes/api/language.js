@@ -7,9 +7,11 @@ const auth = require('routes/auth');
 
 // Get language options
 
-router.get('/language', auth.required, function(req, res, next){
-    User.findById(req.payload.id).then(function(user){
-        if(!user){ return res.sendStatus(401); }
+router.get('/language', auth.required, function (req, res, next) {
+    User.findById(req.payload.id).then(function (user) {
+        if (!user) {
+            return res.sendStatus(401);
+        }
 
         return res.json({user: user.toAuthJSON()});
     }).catch(next);
