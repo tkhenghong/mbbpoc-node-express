@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const router = require('express').Router();
 const passport = require('passport');
 const User = mongoose.model('User');
-const auth = require('auth');
+const auth = require('routes/auth');
 
 // Get language options
 
@@ -16,3 +16,5 @@ router.get('/language', auth.required, function(req, res, next){
 });
 
 // Get translations
+
+module.exports = router;
