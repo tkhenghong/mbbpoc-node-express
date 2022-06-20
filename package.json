@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./app.js",
+    "test": "newman run ./tests/api-tests.postman.json -e ./tests/env-api-tests.postman.json"
   },
   "keywords": [],
   "author": "",
@@ -26,11 +27,19 @@
     "cors": "^2.8.5",
     "country-flag-emoji-json": "^2.0.0",
     "dotenv": "^16.0.1",
+    "errorhandler": "^1.5.1",
     "express": "^4.18.1",
+    "express-jwt": "^7.7.5",
     "express-session": "^1.17.3",
     "i18n": "^0.15.0",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
     "moment": "^2.29.3",
     "mongoose": "^6.3.8",
+    "mongoose-unique-validator": "^3.1.0",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "underscore": "^1.13.4",
     "url": "^0.11.0"
   },
