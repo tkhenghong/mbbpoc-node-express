@@ -31,4 +31,4 @@ jobs:
 #     - run: npm test
     - run: echo "The API key is:${{ env.TEST_TOKEN }}"
       env:
-        TEST_TOKEN: ${{ 'Inline test token value' }}
+        TEST_TOKEN: ${{ secrets.TEST_TOKEN }}
