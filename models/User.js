@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const secret = require('../config').secret;
+const SECRET = require('../config').SECRET;
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -48,7 +48,7 @@ UserSchema.methods.generateJWT = function () {
 
     return jwt.sign({
         id: this._id, username: this.username, exp: parseInt(exp.getTime() / 1000),
-    }, secret);
+    }, SECRET);
 };
 
 UserSchema.methods.toAuthJSON = function () {

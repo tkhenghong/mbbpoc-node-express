@@ -10,6 +10,7 @@ const http = require('http'),
     mongoose = require('mongoose');
 
 const isProduction = process.env.NODE_ENV === 'production';
+const MONGODB_URI = require('./config').MONGODB_URI;
 
 // Create global app object
 const app = express();
@@ -28,14 +29,11 @@ app.use(session({secret: 'conduit', cookie: {maxAge: 60000}, resave: false, save
 
 if (!isProduction) {
     app.use(errorhandler());
-}
-
-if (isProduction) {
-    mongoose.connect(process.env.MONGODB_URI);
-} else {
-    mongoose.connect('mongodb://127.0.0.1:27017/mh-region');
     mongoose.set('debug', true);
 }
+
+mongoose.connect(MONGODB_URI);
+
 
 require('./models/User');
 require('./config/passport');

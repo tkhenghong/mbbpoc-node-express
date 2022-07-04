@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
-router.use('/', require('./users'));
+router.use('/', require('./general'));
+router.use('/users', require('./users'));
 router.use('/locations', require('./location'));
 
 router.use(function (err, req, res, next) {
