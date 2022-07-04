@@ -12,9 +12,9 @@ services:
       - mongo
     environment:
       - NODE_ENV=development
-      - APP_NAME='Maybank Heart Malaysia
+      - APP_NAME='Maybank Heart Malaysia'
       - APP_ID=MY
-      - MONGO_URI=mongodb://mongo:27017/mh
+      - MONGO_URI='mongodb://mongo:27017/mh'
 
   id_server:
     image: tkhenghong/maybankheartpoc:id-latest
@@ -27,9 +27,9 @@ services:
       - mongo
     environment:
       - NODE_ENV=development
-      - APP_NAME='Maybank Heart Indonesia
+      - APP_NAME='Maybank Heart Indonesia'
       - APP_ID=ID
-      - MONGO_URI=mongodb://mongo:27017/mh
+      - MONGO_URI='mongodb://mongo:27017/mh'
 
   mongo:
     image: mongo

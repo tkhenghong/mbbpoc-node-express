@@ -32,7 +32,7 @@ if (!isProduction) {
     mongoose.set('debug', true);
 }
 
-console.log('app.js MONGO_URI: ', MONGO_URI);
+console.log('app.js MONGO_URI: ', MONGODB_URI);
 mongoose.connect(MONGODB_URI);
 
 
