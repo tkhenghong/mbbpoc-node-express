@@ -13,9 +13,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./server
     strategy:
       matrix:
         node-version: [14.x]
@@ -38,9 +35,6 @@ jobs:
   push_to_Docker_Hub:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./server
     # build docker image and push to docker hub
     # only if the app build and test successfully
     needs: [ build ]
@@ -65,7 +59,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          file: ./server/Dockerfile
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mbb-h:latest
 
