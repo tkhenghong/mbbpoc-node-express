@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+
+  server:
+    image: tkhenghong/mbb-h:latest
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+    environment:
+      - NODE_ENV=development
+      - FACEBOOK_SECRET='abf774b3b93ccb0fb320c9f60a427220'
+      - GOOGLE_ID='153474509811-2t3gjeh1ndr2qnefmru10d959vagvtv3.apps.googleusercontent.com'
+      - GOOGLE_SECRET='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'
+      - RECAPTCHA_SECRET_KEY='6Ld4miEgAAAAACCJ23NuA-YAwH24RFaSKtyv6ZYS'
+      - RECAPTCHA_VERIFICATION_URL='https://www.google.com/recaptcha/api/siteverify'
+      - APP_NAME='Maybank Heart Malaysia'
+      - MONGO_URI='mongodb://mongo:27017/mh'
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
