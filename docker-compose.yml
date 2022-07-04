@@ -2,7 +2,7 @@ version: "2"
 
 services:
   my_server:
-    image: tkhenghong/maybankheartpoc:id-latest
+    image: tkhenghong/maybankheartpoc:my-latest
     volumes:
       - ./:/app
     ports:
