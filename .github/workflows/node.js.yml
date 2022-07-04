@@ -61,12 +61,12 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mbb-h:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:latest
 
       - name: Run the image in a container
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/mbb-h:latest
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:latest
           run: |
             echo "runing the docker image"
             echo "Testing the MaybankHeart backend app endpoints"
