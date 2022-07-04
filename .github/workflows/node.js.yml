@@ -10,34 +10,52 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  build_malaysia:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [ 14.x ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup
-      run: cp .env.id .env
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-#        cache: 'npm'
-#        cache-dependency-path: '**/package-lock.json'
-    - run: npm ci
-    - run: npm run build --if-present
-#    - run: npm test
+      - uses: actions/checkout@v3
+      #      - name: Setup # Default is Malaysia
+      #        run: cp .env.id .env
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+  #    - run: npm test
 
-  push_to_Docker_Hub:
+  build_indonesia:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup
+        run: cp .env.id .env
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+  #    - run: npm test
+
+  push_to_Docker_Hub_indonesia:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # build docker image and push to docker hub
     # only if the app build and test successfully
-    needs: [ build ]
+    needs: [ build_indonesia ]
 
     steps:
       - name: checkout repo
@@ -61,14 +79,54 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:id-latest
 
       - name: Run the image in a container
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:latest
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:id-latest
           run: |
-            echo "runing the docker image"
-            echo "Testing the MaybankHeart backend app endpoints"
+            echo "running the docker image"
+            echo "Testing the MaybankHeart Indonesia backend app endpoints"
+            echo ${{ steps.docker_build.outputs.digest }}
+
+  push_to_Docker_Hub_malaysia:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # build docker image and push to docker hub
+    # only if the app build and test successfully
+    needs: [ build_malaysia ]
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:my-latest
+
+      - name: Run the image in a container
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:my-latest
+          run: |
+            echo "running the docker image"
+            echo "Testing the MaybankHeart Malaysia backend app endpoints"
             echo ${{ steps.docker_build.outputs.digest }}
 
