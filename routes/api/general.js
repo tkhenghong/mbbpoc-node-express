@@ -5,7 +5,7 @@ const auth = require("../auth");
 const router = require('express').Router();
 
 
-router.get('/', auth.required, function (req, res, next) {
+router.get('/', function (req, res, next) {
     res.json({message: `This is ${process.env.APP_NAME} API.`});
 });
 
