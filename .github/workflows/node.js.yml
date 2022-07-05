@@ -152,5 +152,6 @@ jobs:
             docker-compose -v
             git pull
             docker-compose down --rmi all
+            chmod +x init-letsencrypt.sh
             sudo ./init-letsencrypt.sh
             docker-compose up -d
