@@ -32,6 +32,11 @@ Current Strategy: Access into EC2 instance via SSH and deploy/update the app usi
     * key: Use the Private Key (PEM) file provided by EC2, copy its value and paste it into GitHub Actions Secret.
     * port: 22
 * Set SSH Server Config in the EC2 Instance.
+* In Route 53, under your domain name, create a record with the following details:
+  * Record name: api.maybankheart.com
+  * Record Type: A
+  * Routing Policy: Simple
+  * Value: 18.139.219.182 (Your EC2 instance public IPv4 address)
 * Start Docker Compose with HTTPS Let's Encrypt. [Link](https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71)
 
 ## Problems
