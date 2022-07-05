@@ -17,16 +17,18 @@ A Proof of Concept project for building a platform to provide
 * [node-express-realworld-example-app](https://github.com/gothinkster/node-express-realworld-example-app)
 
 ## Deployment
-### GitHub Actions
 
+Current Strategy: Access into EC2 instance via SSH and deploy/update the app using Docker Compose.
 
-### Build Amazon EC2 with Amazon Linux 2 with Docker and Docker Compose
-* [Amazon Linux 2 - install docker & docker-compose using 'sudo amazon-linux-extras' command](https://gist.github.com/npearce/6f3c7826c7499587f00957fee62f8ee9)
-  * Create public-private key pair
-    * ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-    * cat .ssh/id_rsa.pub | ssh b@B 'cat >> .ssh/authorized_keys2'
-    * clip < ~/.ssh/id_rsa
-    * Copy the private key value from the last command and paste it in GitHub Actions Secret
+### Steps:
 
-
-
+* Create EC2 instance
+* Access instance and
+   install [Docker & Docker-compose](https://gist.github.com/npearce/6f3c7826c7499587f00957fee62f8ee9)
+* Insert secrets value into GitHub Actions Secrets:
+    * host: ec2-XX-XXX-XXX-XXX.ap-southeast-1.compute.amazonaws.com
+    * username: [Default: ec2-user]
+    * key: Use the Private Key (PEM) file provided by EC2, copy its value and paste it into GitHub Actions Secret.
+    * port: 22
+* Set SSH Server Config in the EC2 Instance.
+  See [here](https://github.com/appleboy/ssh-action/issues/80#issuecomment-1130407377).
