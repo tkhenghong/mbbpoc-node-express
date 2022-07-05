@@ -10,7 +10,8 @@ A Proof of Concept project for building a platform to provide
 * [Building in JavaScript with Internationalization (I18N) in Mind](https://phrase.com/blog/posts/node-js-i18n-guide/)
 * [The Ultimate Guide to Node.js Internationalization (I18n)](https://phrase.com/blog/posts/node-js-i18n-guide/)
 * [Internationalization and Localization in Node.js](https://www.npmjs.com/package/i18n)
-
+* [Nginx and Let’s Encrypt with Docker in Less Than 5 Minutes](https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71)
+* [Setup HTTPS For Nginx On AWS EC2 Linux Instance Using Docker And Certbot](https://www.c-sharpcorner.com/article/setup-https-for-nginx-on-aws-ec2-linux-instance-using-docker-and-certbot/)
 ## Initial code referenced:
 
 * [PhraseApp-Blog/nodejs-i18n](https://github.com/PhraseApp-Blog/nodejs-i18n)
