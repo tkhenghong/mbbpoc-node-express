@@ -150,4 +150,5 @@ jobs:
             git clone https://github.com/tkhenghong/maybankheartpoc.git
             cd maybankheartpoc
             docker-compose down --rmi all
+            sudo ./init-letsencrypt.sh
             docker-compose up -d

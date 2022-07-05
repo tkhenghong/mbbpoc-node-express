@@ -32,3 +32,4 @@ Current Strategy: Access into EC2 instance via SSH and deploy/update the app usi
     * port: 22
 * Set SSH Server Config in the EC2 Instance.
   See [here](https://github.com/appleboy/ssh-action/issues/80#issuecomment-1130407377).
+* Start Docker Compose with HTTPS Let's Encrypt. Reference [link](https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71)
