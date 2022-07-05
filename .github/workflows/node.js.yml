@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 14.x ]
+        node-version: [ 16.x ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -149,6 +149,7 @@ jobs:
           script: |
             [ ! -d ./maybankheartpoc ] && git clone https://github.com/tkhenghong/maybankheartpoc.git
             cd maybankheartpoc
+            docker-compose -v
             git pull
             docker-compose down --rmi all
             sudo ./init-letsencrypt.sh
