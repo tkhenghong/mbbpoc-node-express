@@ -147,7 +147,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            git clone https://github.com/tkhenghong/maybankheartpoc.git
+            [ ! -d ./maybankheartpoc ] && git clone https://github.com/tkhenghong/maybankheartpoc.git
             cd maybankheartpoc
             git pull
             docker-compose down --rmi all
