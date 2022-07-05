@@ -25,11 +25,15 @@ Current Strategy: Access into EC2 instance via SSH and deploy/update the app usi
 * Create EC2 instance
 * Access instance and
    install [Docker & Docker-compose](https://gist.github.com/npearce/6f3c7826c7499587f00957fee62f8ee9)
+  * You may experience some issues with Docker-compose like Problem 1
 * Insert secrets value into GitHub Actions Secrets:
     * host: ec2-XX-XXX-XXX-XXX.ap-southeast-1.compute.amazonaws.com
     * username: [Default: ec2-user]
     * key: Use the Private Key (PEM) file provided by EC2, copy its value and paste it into GitHub Actions Secret.
     * port: 22
 * Set SSH Server Config in the EC2 Instance.
-  See [here](https://github.com/appleboy/ssh-action/issues/80#issuecomment-1130407377).
-* Start Docker Compose with HTTPS Let's Encrypt. Reference [link](https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71)
+* Start Docker Compose with HTTPS Let's Encrypt. [Link](https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71)
+
+## Problems
+1. Issue where unable to SSH into the EC2 instance from GitHub Action: [Link](https://github.com/appleboy/ssh-action/issues/80#issuecomment-1130407377)
+2. docker-compose command not found when using sudo: [Link](https://stackoverflow.com/a/50243566)
