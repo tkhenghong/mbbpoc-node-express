@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if ! [ -x "$(command docker-compose -v)" ]; then
+if ! [ -x "$(command -v docker-compose)" ]; then
   echo 'Error: docker-compose is not installed.' >&2
-  exit 1
+else
+  echo 'Docker-compose is installed.'
 fi
 
 domains=(api.maybankheart.com www.api.maybankheart.com)
