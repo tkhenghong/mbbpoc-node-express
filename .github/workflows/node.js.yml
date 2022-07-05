@@ -130,3 +130,22 @@ jobs:
             echo "Testing the MaybankHeart Malaysia backend app endpoints"
             echo ${{ steps.docker_build.outputs.digest }}
 
+  deploy_to_AWS_indonesia:
+    name: Deploy to Indonesia EC2 instance
+    runs-on: ubuntu-latest
+    needs: [ build_indonesia ]
+
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            whoami
+            ls -al
