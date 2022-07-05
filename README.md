@@ -22,3 +22,11 @@ A Proof of Concept project for building a platform to provide
 
 ### Build Amazon EC2 with Amazon Linux 2 with Docker and Docker Compose
 * [Amazon Linux 2 - install docker & docker-compose using 'sudo amazon-linux-extras' command](https://gist.github.com/npearce/6f3c7826c7499587f00957fee62f8ee9)
+  * Create public-private key pair
+    * ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+    * cat .ssh/id_rsa.pub | ssh b@B 'cat >> .ssh/authorized_keys2'
+    * clip < ~/.ssh/id_rsa
+    * Copy the private key value from the last command and paste it in GitHub Actions Secret
+
+
+

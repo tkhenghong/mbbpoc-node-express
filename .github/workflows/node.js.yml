@@ -133,7 +133,7 @@ jobs:
   deploy_to_AWS_indonesia:
     name: Deploy to Indonesia EC2 instance
     runs-on: ubuntu-latest
-    needs: [ build_indonesia ]
+    needs: [ push_to_Docker_Hub_indonesia ]
 
     steps:
       - name: Checkout the files
