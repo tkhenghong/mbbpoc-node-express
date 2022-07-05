@@ -42,3 +42,4 @@ Current Strategy: Access into EC2 instance via SSH and deploy/update the app usi
 ## Problems
 1. Issue where unable to SSH into the EC2 instance from GitHub Action: [Link](https://github.com/appleboy/ssh-action/issues/80#issuecomment-1130407377)
 2. docker-compose command not found when using sudo: [Link](https://stackoverflow.com/a/50243566)
+3. Let's Encrypt: too many failed authorizations recently... : [Link](https://community.letsencrypt.org/t/error-creating-new-order-too-many-failed-authorizations-recently-see-https-letsencrypt-org-docs-rate-limits/98069)
