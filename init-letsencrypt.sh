@@ -6,7 +6,7 @@ else
   echo 'Docker-compose is installed.'
 fi
 
-domains=(maybankheart.com www.maybankheart.com)
+domains=(api.maybankheart.com www.api.maybankheart.com)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="tkhenghong.maybank@gmail.com" # Adding a valid address is strongly recommended
