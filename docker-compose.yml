@@ -30,7 +30,7 @@ services:
       - mongo
     environment:
       - NODE_ENV=development
-      - APP_NAME=Maybank Heart Malaysia
+      - APP_NAME=Maybank Heart Malaysia From Docker Compose
       - APP_ID=MY
       - MONGODB_URI=mongodb://mongo:27017/mh
 
@@ -45,7 +45,7 @@ services:
       - mongo
     environment:
       - NODE_ENV=development
-      - APP_NAME=Maybank Heart Indonesia
+      - APP_NAME=Maybank Heart Indonesia From Docker Compose
       - APP_ID=ID
       - MONGODB_URI=mongodb://mongo:27017/mh
 
