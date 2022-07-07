@@ -28,7 +28,7 @@ services:
       - my-server
       - id-server
   my_server:
-    image: tkhenghong/maybankheartpoc:my-latest
+    image: tkhenghong/mbbpoc-node-express:my-latest
     restart: unless-stopped
     volumes:
       - ./:/app
@@ -38,14 +38,14 @@ services:
       - mongo
     environment:
       - NODE_ENV=development
-      - APP_NAME=Maybank Heart Malaysia From Docker Compose
+#      - APP_NAME=Maybank Heart Malaysia From Docker Compose
       - APP_ID=MY
       - MONGODB_URI=mongodb://mongo:27017/mh
     networks:
       - app-network
 
   id_server:
-    image: tkhenghong/maybankheartpoc:id-latest
+    image: tkhenghong/mbbpoc-node-express:id-latest
     restart: unless-stopped
     volumes:
       - ./:/app
@@ -55,7 +55,7 @@ services:
       - mongo
     environment:
       - NODE_ENV=development
-      - APP_NAME=Maybank Heart Indonesia From Docker Compose
+#      - APP_NAME=Maybank Heart Indonesia From Docker Compose
       - APP_ID=ID
       - MONGODB_URI=mongodb://mongo:27017/mh
     networks:

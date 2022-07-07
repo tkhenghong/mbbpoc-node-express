@@ -28,7 +28,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
-  #    - run: npm test
+      - run: npm test
 
   build_indonesia:
     runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
-  #    - run: npm test
+      - run: npm test
 
   push_to_Docker_Hub_indonesia:
     # The type of runner that the job will run on
@@ -79,12 +79,12 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:id-latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mbbpoc-node-express:id-latest
 
       - name: Run the image in a container
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:id-latest
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/mbbpoc-node-express:id-latest
           run: |
             echo "running the docker image"
             echo "Testing the MaybankHeart Indonesia backend app endpoints"
@@ -119,12 +119,12 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:my-latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mbbpoc-node-express:my-latest
 
       - name: Run the image in a container
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/maybankheartpoc:my-latest
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/mbbpoc-node-express:my-latest
           run: |
             echo "running the docker image"
             echo "Testing the MaybankHeart Malaysia backend app endpoints"
@@ -147,8 +147,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            [ ! -d ./maybankheartpoc ] && git clone https://github.com/tkhenghong/maybankheartpoc.git
-            cd maybankheartpoc
+            [ ! -d ./mbbpoc-node-express ] && git clone https://github.com/tkhenghong/mbbpoc-node-express.git
+            cd mbbpoc-node-express
             docker-compose -v
             git pull
             docker-compose down --rmi all
