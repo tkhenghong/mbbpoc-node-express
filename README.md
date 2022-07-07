@@ -1,9 +1,6 @@
-# MaybankHeart POC
+# MBB POC
 
-A Proof of Concept project for building a platform to provide
-
-* Language translation (i18n/i10n)
-* Configuration controls (Different backends for different countries/regions, modify redirect URLs & etc.)
+A Proof of Concept project for building a platform to deploy instances with dynamic Environment/Configuration controls (Different backends for different countries/regions, modify redirect URLs & etc.)
 
 ## References:
 
@@ -14,7 +11,6 @@ A Proof of Concept project for building a platform to provide
 * [Setup HTTPS For Nginx On AWS EC2 Linux Instance Using Docker And Certbot](https://www.c-sharpcorner.com/article/setup-https-for-nginx-on-aws-ec2-linux-instance-using-docker-and-certbot/)
 ## Initial code referenced:
 
-* [PhraseApp-Blog/nodejs-i18n](https://github.com/PhraseApp-Blog/nodejs-i18n)
 * [node-express-realworld-example-app](https://github.com/gothinkster/node-express-realworld-example-app)
 
 ## Deployment
