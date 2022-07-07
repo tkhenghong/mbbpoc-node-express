@@ -13,8 +13,8 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     depends_on:
-      - my-server
-      - id-server
+      - my_server
+      - id_server
     networks:
       - app-network
   certbot:
@@ -25,8 +25,8 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     depends_on:
-      - my-server
-      - id-server
+      - my_server
+      - id_server
   my_server:
     image: tkhenghong/mbbpoc-node-express:my-latest
     restart: unless-stopped
