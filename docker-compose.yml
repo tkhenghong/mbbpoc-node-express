@@ -15,6 +15,7 @@ services:
     depends_on:
       - my_server
       - id_server
+      - my_frontend
     networks:
       - app-network
   certbot:
@@ -27,6 +28,20 @@ services:
     depends_on:
       - my_server
       - id_server
+      - my_frontend
+
+  my_frontend:
+    image: tkhenghong/maybankpoc-reactjs:my-latest
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+    ports:
+      - '80:80'
+    environment:
+      - BACKEND_URI=http://my_server:3000
+    networks:
+      - app-network
+
   my_server:
     image: tkhenghong/mbbpoc-node-express:my-latest
     restart: unless-stopped
