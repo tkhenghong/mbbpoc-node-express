@@ -53,8 +53,6 @@ services:
       - ./:/app
     ports:
       - '3001:3000'
-    links:
-      - mongo
     environment:
       - NODE_ENV=development
 #      - APP_NAME=Maybank Heart Malaysia From Docker Compose
@@ -71,8 +69,6 @@ services:
       - ./:/app
     ports:
       - '3000:3000'
-    links:
-      - mongo
     environment:
       - NODE_ENV=development
 #      - APP_NAME=Maybank Heart Indonesia From Docker Compose
