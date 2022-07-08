@@ -30,11 +30,11 @@ Current Strategy: Access into EC2 instance via SSH and deploy/update the app usi
     * port: 22
 * Set SSH Server Config in the EC2 Instance.
 * In Route 53, under your domain name, create TWO(2) records with the following details:
-  * Record name: api.maybankheart.com
+  * Record name: poc.maybankheart.com
      * Record Type: A
      * Routing Policy: Simple
      * Value: 18.139.219.182 (Your EC2 instance public IPv4 address)
-  * Record name: www.api.maybankheart.com
+  * Record name: www.poc.maybankheart.com
      * Record Type: A
      * Routing Policy: Simple
      * Value: 18.139.219.182 (Your EC2 instance public IPv4 address)
