@@ -3,6 +3,7 @@ version: '3'
 services:
   nginx:
     image: nginx:1.15-alpine
+    container_name: nginx
     restart: unless-stopped
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     ports:
@@ -20,6 +21,7 @@ services:
       - app-network
   certbot:
     image: certbot/certbot
+    container_name: certbot
     restart: unless-stopped
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     volumes:
@@ -32,6 +34,7 @@ services:
 
   my_frontend:
     image: tkhenghong/maybankpoc-reactjs:my-latest
+    container_name: my_frontend
     restart: unless-stopped
     volumes:
       - ./:/app
@@ -44,6 +47,7 @@ services:
 
   my_server:
     image: tkhenghong/mbbpoc-node-express:my-latest
+    container_name: my_server
     restart: unless-stopped
     volumes:
       - ./:/app
@@ -61,6 +65,7 @@ services:
 
   id_server:
     image: tkhenghong/mbbpoc-node-express:id-latest
+    container_name: id_server
     restart: unless-stopped
     volumes:
       - ./:/app
@@ -78,7 +83,7 @@ services:
 
   mongo:
     image: mongo
-    container_name: "mongo"
+    container_name: mongo
     volumes:
       - db:/data/db
     environment:
