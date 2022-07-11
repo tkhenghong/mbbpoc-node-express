@@ -154,5 +154,7 @@ jobs:
             docker-compose down --rmi all
             chmod +x init-letsencrypt.sh
             chmod ugo+rwx data/
+            chmod ugo+rwx data/certbot/
+            chmod ugo+rwx data/certbot/www/
             sudo ./init-letsencrypt.sh
             docker-compose up -d
