@@ -19,7 +19,6 @@ services:
       - my_frontend
     networks:
       - app-network
-    network_mode: "host"
 
   certbot:
     image: certbot/certbot
@@ -97,5 +96,5 @@ volumes:
 
 networks:
   app-network:
-#    driver: bridge
+    driver: bridge
     external: true
